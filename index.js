@@ -24,6 +24,7 @@ mongoose
   app.use(express.json());
   
   app.use(cookieParser());
+  
   app.use(cors())
 
 app.listen(3000, () => {
