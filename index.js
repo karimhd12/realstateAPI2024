@@ -9,7 +9,13 @@ import path from 'path';
 import cors from 'cors';
 
 dotenv.config();
-
+app.use(cors())
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
@@ -25,7 +31,6 @@ mongoose
   
   app.use(cookieParser());
   
-  app.use(cors())
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000!');
@@ -48,9 +53,3 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
