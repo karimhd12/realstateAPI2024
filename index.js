@@ -5,7 +5,7 @@ import userRouter from './routes/user.route.js';
 import authRouter from './routes/auth.route.js'
 import listingRouter from './routes/listing.route.js'
 import path from 'path';
-
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 const port = 3000 || process.env.PORT
 dotenv.config()
@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGODB).then(()=>{
 const app = express()
 
 app.use(express.json())
-
+app.use(cors());
 app.use(cookieParser())
 
 app.listen(port,()=>{
