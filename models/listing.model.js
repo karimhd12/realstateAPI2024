@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const listingSchema = new mongoose.Schema(  {
+const listingSchema = new mongoose.Schema(
+  {
     name: {
       type: String,
       required: true,
